@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Belajar sambil nge game</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== SLIDE 1: FORM PEMBUKA ===== -->
+  <section id="slide1" class="slide slide--active">
+    <div id="starField"></div>
+    <div class="intro">
+      <h1>✨ lagi gabut ya? yuk main! 😋✨</h1>
+
+      <form id="userForm" class="card">
+        <input id="namaLengkap" type="text" placeholder="Nama Lengkap" required />
+        <input id="tanggalLahir" type="date" required />
+        <input id="makananFavorit" type="text" placeholder="Makanan Favorit" required />
+        <input id="minumanFavorit" type="text" placeholder="Minuman Favorit" required />
+        <button type="submit" class="btn btn--primary">
+          Mulai 🚀
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 2: GAME ===== -->
+  <section id="slide2" class="slide">
+    <!-- AUDIO -->
+    <audio id="backsound" loop src="assets/sounds/backsound.mp3"></audio>
+    <audio id="clickSound" src="assets/sounds/click.mp3"></audio>
+    <audio id="winSound" src="assets/sounds/win.mp3"></audio>
+    <audio id="loseSound" src="assets/sounds/lose.mp3"></audio>
+
+    <div class="hud">
+      <div class="badge">Skor: <span id="scoreText">0</span></div>
+      <div class="badge">Checkpoint: <span id="cpText">0/10</span></div>
+    </div>
+
+    <div id="gameContainer">
+      <div id="gameArea">
+        <!-- Karakter -->
+        <img id="character" class="character waving" src="assets/character/char_idle.png" alt="Karakter" />
+
+        <!-- RUTE + CHECKPOINTS -->
+        <div id="route" class="route">
+          <!-- 10 titik -->
+          <div class="cp" id="cp1"><span class="pad"></span></div>
+          <div class="cp" id="cp2"><span class="pad"></span></div>
+          <div class="cp" id="cp3"><span class="pad"></span></div>
+          <div class="cp" id="cp4"><span class="pad"></span></div>
+          <div class="cp" id="cp5"><span class="pad"></span></div>
+          <div class="cp" id="cp6"><span class="pad"></span></div>
+          <div class="cp" id="cp7"><span class="pad"></span></div>
+          <div class="cp" id="cp8"><span class="pad"></span></div>
+          <div class="cp" id="cp9"><span class="pad"></span></div>
+          <div class="cp finish" id="cp10"><span class="pad"></span></div>
+          <!-- Garis penghubung -->
+          <div class="links"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kontrol -->
+    <div class="controls">
+      <button id="arrowBtn" class="btn-icon" aria-label="Lompat">
+        <img src="assets/icons/arrow.png" alt="Next"/>
+      </button>
+    </div>
+
+    <!-- Reset tengah -->
+    <button id="resetBtn" class="reset-btn">Reset 🔁</button>
+  </section>
+
+  <!-- ===== POPUP PILIHAN (tiap checkpoint) ===== -->
+  <div id="choicePopup" class="modal">
+    <div class="modal__content">
+      <h3 id="choiceTitle">Pilih yang menurutmu lebih baik</h3>
+      <div class="choices">
+        <button id="choiceLeft" class="choice-box">
+          <div class="choice-label"></div>
+          <div class="choice-score"></div>
+        </button>
+        <button id="choiceRight" class="choice-box">
+          <div class="choice-label"></div>
+          <div class="choice-score"></div>
+        </button>
+      </div>
+      <p class="hint">Sehat = +10 • Tidak sehat = +5</p>
+    </div>
+  </div>
+
+  <!-- ===== POPUP HASIL AKHIR ===== -->
+  <div id="resultPopup" class="modal">
+    <div class="modal__content">
+      <div id="resultEmote" class="result-emote"></div>
+      <p id="resultText" class="result-text"></p>
+      <div id="flowerBox" class="flower-box hidden">
+        <img src="assets/icons/flower.png" alt="Bunga" />
+        <p>nah gini dong, nih bunga buat kamu, bentuk apresiasi untuk orang yg milih hidup sehat! ❤️</p>
+      </div>
+      <button id="okResult" class="btn btn--primary">Oke</button>
+    </div>
+  </div>
+
+  <!-- ===== POPUP RESET CONFIRM ===== -->
+  <div id="confirmPopup" class="modal">
+    <div class="modal__content">
+      <p class="confirm-text">yakin nih mulai dari 0, kan cape? 🥹</p>
+      <div class="confirm-actions">
+        <button id="noReset" class="btn">Tidak</button>
+        <button id="yesReset" class="btn btn--danger">Iya</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAYER EMOTE RAIN -->
+  <div id="rainLayer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
